@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="CLPV: Dataset of Controlled Co-Located Lighting and Photometric Variation for Robot Vision">
+  <meta name="keywords" content="CLPV, robot vision, low light, active illumination, exposure, robotics dataset, visual SLAM">
+  <meta property="og:title" content="CLPV: Controlled Co-Located Lighting and Photometric Variation for Robot Vision">
+  <meta property="og:description" content="A controlled dataset and capture platform for studying how exposure, gain, and co-located illumination shape robot-vision measurements.">
+  <meta property="og:image" content="static/images/photometric_cube.png">
+  <meta property="og:url" content="https://droneslab.github.io/CLPV/">
+  <meta name="twitter:card" content="summary_large_image">
+  <title>CLPV: Controlled Photometric Variation for Robot Vision</title>
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans:400,500,700|Noto+Sans:400,500,600,700|Castoro" rel="stylesheet">
+  <link rel="stylesheet" href="static/css/index.css">
+</head>
+<body>
+
+<header class="hero">
+  <div class="container narrow center">
+    <h1 class="publication-title"><span class="accent">CLPV</span>: Dataset of Controlled Co-Located Lighting and Photometric Variation for Robot Vision</h1>
+
+    <div class="authors">
+      <span class="author-block"><a href="https://yash.turkar.in/" target="_blank" rel="noopener">Yash Turkar</a>,</span>
+      <span class="author-block"><a href="https://scholar.google.com/citations?user=NCCK7doAAAAJ&amp;hl=en" target="_blank" rel="noopener">Shekoufeh Sadeghi</a>,</span>
+      <span class="author-block">Shouvik,</span>
+      <span class="author-block"><a href="https://dkkarthik.github.io/" target="_blank" rel="noopener">Karthik Dantu</a></span>
+    </div>
+
+    <div class="affiliation">University at Buffalo, Buffalo, NY</div>
+    <div class="venue">IROS 2026 Workshop on Data in Field Robotics</div>
+
+    <div class="logos" aria-label="Affiliations">
+      <img src="https://droneslab.github.io/LGTN/static/images/ub_logo.png" alt="University at Buffalo" onerror="this.style.display='none'">
+      <img src="https://droneslab.github.io/LGTN/static/images/drones_logo.png" alt="Drones Lab" onerror="this.style.display='none'">
+    </div>
+
+    <div class="links">
+      <a class="button dark" href="static/paper/clpv_dfr_2026.pdf" target="_blank" rel="noopener">Paper PDF</a>
+      <!-- TODO: Replace # with the public dataset URL when available. -->
+      <a class="button dark muted" href="#" aria-disabled="true">Dataset (Coming Soon)</a>
+      <!-- TODO: Replace # with the hardware / collection-code repository URL when available. -->
+      <a class="button dark muted" href="#" aria-disabled="true">Code + Hardware (Coming Soon)</a>
+      <!-- TODO: Add arXiv link if/when posted. -->
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="teaser">
+    <div class="container">
+      <img class="hero-image" src="static/images/photometric_cube.png" alt="CLPV fixed-view photometric sweep across exposure, gain, and active-light intensity">
+      <p class="caption"><strong>Controlled photometric variation from a fixed viewpoint.</strong> CLPV varies exposure time, sensor gain, and commanded co-located light intensity while keeping scene geometry and camera pose fixed.</p>
+    </div>
+  </section>
+
+  <section class="section light">
+    <div class="container prose">
+      <h2>Overview</h2>
+      <p>
+        Robot vision in low-light environments depends not only on the scene, but also on <em>how the image is acquired</em>. Exposure, gain, and onboard illumination can change the information available to feature extraction, tracking, localization, and state estimation. Existing field-robotics datasets provide valuable environmental diversity, but they rarely vary these sensing parameters systematically while holding geometry fixed.
+      </p>
+      <p>
+        <strong>CLPV</strong> is a controlled dataset and capture platform for studying this image-formation problem. Its fixed-view component sweeps camera exposure, gain, and co-located illumination over unchanged scenes; its mobile component records repeatable robot routes with synchronized stereo, LiDAR, odometry, and illuminance measurements. A co-located relighting model can additionally generate alternative light levels from the fixed-exposure mobile sequences while preserving the exact recorded viewpoint and motion.
+      </p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>Dataset at a Glance</h2>
+      <p class="section-note">Numbers below describe the current processed subset in the workshop paper, not the final frozen release.</p>
+      <div class="stat-grid">
+        <div class="stat-card"><div class="stat-number">136</div><div class="stat-label">Fixed-view scenes</div></div>
+        <div class="stat-card"><div class="stat-number">220</div><div class="stat-label">Stereo configurations per scene</div></div>
+        <div class="stat-card"><div class="stat-number">18</div><div class="stat-label">Mobile sequences</div></div>
+        <div class="stat-card"><div class="stat-number">13,667</div><div class="stat-label">Mobile stereo pairs</div></div>
+      </div>
+      <div class="factor-row">
+        <span><strong>5</strong> exposure settings</span>
+        <span>×</span>
+        <span><strong>4</strong> gain settings</span>
+        <span>×</span>
+        <span><strong>11</strong> light levels (0–100%)</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section light">
+    <div class="container">
+      <h2>Contributions</h2>
+      <div class="contribution-grid">
+        <article class="contribution-card">
+          <div class="card-index">01</div>
+          <h3>Controlled fixed-view + mobile data</h3>
+          <p>136 fixed-view scenes over exposure, gain, and active-light sweeps, plus 18 repeatable mobile sequences with synchronized stereo, lux, LiDAR, and odometry.</p>
+        </article>
+        <article class="contribution-card">
+          <div class="card-index">02</div>
+          <h3>Programmable illumination platform</h3>
+          <p>A software-controllable, co-located illuminator and capture stack provide remotely commanded light intensity, synchronized stereo acquisition, sensor readback, and ROS-based tooling.</p>
+        </article>
+        <article class="contribution-card">
+          <div class="card-index">03</div>
+          <h3>Post-capture photometric variation</h3>
+          <p>Fixed-exposure mobile sequences captured at 50% light can be expanded with CLID relighting, enabling multiple illumination variants on the exact same recorded camera motion, timing, scene state, LiDAR, and odometry.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container split">
+      <div class="split-figure">
+        <img src="static/images/acquisition_hardware.png" alt="CLPV acquisition hardware with stereo cameras, controllable light, and lux sensor">
+      </div>
+      <div class="split-text">
+        <h2>Acquisition Platform</h2>
+        <p>The same co-located camera–light assembly is used for fixed-view and mobile collection. The system combines synchronized FLIR BlackFly S stereo cameras, a software-controlled light with a 60° beam, a co-located VEML7700 illuminance sensor, and an Ouster OS0-128 LiDAR. A ZED 2i provides depth context for fixed-view scenes.</p>
+        <p>Every primary observation is stored as a hardware-synchronized stereo pair. Mobile LiDAR timing is synchronized to the acquisition Jetson using PTP, and the release records stereo, odometry, camera state, light command, lux, and timestamps for cross-modal association.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section light">
+    <div class="container">
+      <h2>Controlled Fixed-View Sweeps</h2>
+      <p class="lead">For every static scene, CLPV holds viewpoint and geometry fixed while traversing the Cartesian acquisition grid <strong>exposure × gain × active-light intensity</strong>.</p>
+      <img class="wide-figure dark-frame" src="static/images/fixed_view_grid.jpg" alt="Fixed-view grid showing image appearance across exposure and light intensity">
+      <p class="caption">A single scene changes from severe underexposure through useful intermediate conditions to saturation as exposure and co-located illumination increase. Each scene additionally includes ambient and per-intensity VEML7700 lux measurements.</p>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container prose">
+      <h2>Repeatable Mobile Sequences + Relighting</h2>
+      <p>A LiDAR-SLAM teach-and-repeat workflow revisits the same route under two complementary physical baselines: a controlled run at <strong>4000&nbsp;µs exposure, 12&nbsp;dB gain, and 50% light</strong>, and an <strong>auto-exposure run with the co-located light disabled</strong>. The current subset contains 18 sequences and 13,667 stereo pairs.</p>
+      <p>The 50%-light sequence is also the reference input to CLID. CLID decomposes each observation into an ambient component and a co-located light contribution, then synthesizes requested light levels. These derived variants preserve the exact recorded camera motion, frame timing, scene state, LiDAR, and odometry; only the modeled active-light contribution changes.</p>
+    </div>
+  </section>
+
+  <section class="section light">
+    <div class="container">
+      <h2>Dataset Characterization</h2>
+      <p class="lead">CLPV is presented as a controlled data resource rather than a leaderboard tied to a single algorithm. The paper characterizes scene coverage, photometric range, acquisition integrity, and repeatability.</p>
+
+      <div class="figure-block">
+        <img class="wide-figure" src="static/images/data_coverage.png" alt="CLPV scene depth and environment coverage">
+        <p class="caption"><strong>Scene and depth coverage.</strong> The current fixed-view subset spans offices/classrooms, labs/workshops, corridors, lobbies/atria, residential, transitional, and utility spaces, with compact scenes and longer-range corridor/atrium views. Semantic attributes are dataset descriptors rather than task ground truth.</p>
+      </div>
+
+      <div class="figure-block">
+        <img class="wide-figure" src="static/images/camera_light_response.png" alt="Mean intensity, near-black pixels, saturation, and gradient energy across exposure and light intensity">
+        <p class="caption"><strong>Photometric response.</strong> Increasing exposure and active light moves observations from near-black toward greater intensity and gradient energy, and eventually toward clipping. The effect of the co-located light is most visible at intermediate exposures; the lowest settings remain signal-limited and the highest increasingly saturate.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2>Current Processed Subset</h2>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Quantity</th><th>Current value</th></tr></thead>
+          <tbody>
+            <tr><td>Fixed-view scenes</td><td>136</td></tr>
+            <tr><td>Exposure settings</td><td>5</td></tr>
+            <tr><td>Gain settings</td><td>4</td></tr>
+            <tr><td>Physical light settings</td><td>11 (0–100%)</td></tr>
+            <tr><td>Settings per fixed scene</td><td>220</td></tr>
+            <tr><td>Expected fixed stereo pairs</td><td>29,920</td></tr>
+            <tr><td>Expected fixed images</td><td>59,840</td></tr>
+            <tr><td>Mobile sequences</td><td>18</td></tr>
+            <tr><td>Mobile stereo pairs</td><td>13,667</td></tr>
+            <tr><td>Physical sequence baselines</td><td>Fixed exposure; auto exposure</td></tr>
+            <tr><td>Reference light level</td><td>50%</td></tr>
+            <tr><td>Fixed-view lux measurements</td><td>Ambient and per light intensity</td></tr>
+            <tr><td>Auxiliary mobile streams</td><td>LiDAR, odometry, and VEML7700 lux</td></tr>
+            <tr><td>Synchronization</td><td>Stereo hardware trigger; LiDAR–Jetson PTP</td></tr>
+            <tr><td>Calibration</td><td>Full stereo intrinsics, distortion, and extrinsics</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="section-note">The workshop paper states that collection is ongoing toward approximately 500 fixed-view scenes and 50 robot sequences. Final counts should be regenerated from the frozen release manifest before public launch.</p>
+    </div>
+  </section>
+
+  <section class="section light">
+    <div class="container prose">
+      <h2>Capture Integrity and Release Protocol</h2>
+      <p>Fixed-view audits cover grid and stereo-pair completeness, hardware-trigger consistency, camera-setting readback, light settling, corrupted files, and scene motion. Mobile audits cover stereo continuity, dropped frames, LiDAR and odometry rates, PTP offset, cross-modal timestamp residuals, and valid measurement association. Checksums and audit tooling are intended to ship with the release.</p>
+      <p>For repeatable routes, LiDAR-SLAM localization is used to align repeats to the taught route and quantify cross-track displacement, heading difference, path-length ratio, and speed distribution. These metrics measure how closely physical repeats revisit the same route without treating them as frame-identical.</p>
+    </div>
+  </section>
+
+  <section class="section" id="citation">
+    <div class="container">
+      <h2>BibTeX</h2>
+      <pre><code>@inproceedings{clpv2026,
+  title     = {CLPV: Dataset of Controlled Co-Located Lighting and Photometric Variation for Robot Vision},
+  author    = {Turkar, Yash and Sadeghi, Shekoufeh and Shouvik and Dantu, Karthik},
+  booktitle = {IROS 2026 Workshop on Data in Field Robotics},
+  year      = {2026}
+}</code></pre>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container center">
+    <p>Project page based on the <a href="https://github.com/droneslab/LGTN" target="_blank" rel="noopener">LGTN / Lightning</a> academic project-page structure.</p>
+  </div>
+</footer>
+
+</body>
+</html>
